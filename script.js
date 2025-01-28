@@ -29,44 +29,74 @@ ScrollTrigger.refresh();
 
 
 var tl = gsap.timeline()
-tl.from('.line h1', {
-    y: 150,
-    stagger: 0.3,
-    opacity: 0,
-    duration: 0.6,
-    delay: 0.5
-})
 
-tl.from('.line1-part1, .line h2', {
-    opacity:0,
-    onStart: function() {
-        var h4Timers = document.querySelectorAll('.line1-part1 h4');
-        var grow = 0;
-        setInterval(function() {
-            if (grow <= 100) {
-                // Loop through all selected h4 elements
-                h4Timers.forEach(function(h4Timer) {
-                    h4Timer.innerHTML = grow; // Update the inner HTML
-                });
-                grow++;
-            }
-        }, 35);
-    }
-})
+function loaderAnimation() {
+    tl.from('.line h1', {
+        y: 150,
+        stagger: 0.3,
+        opacity: 0,
+        duration: 0.6,
+        delay: 0.5
+    })
+    
+    tl.from('.line1-part1, .line h2', {
+        opacity:0,
+        onStart: function() {
+            var h4Timers = document.querySelectorAll('.line1-part1 h4');
+            var grow = 0;
+            setInterval(function() {
+                if (grow <= 100) {
+                    // Loop through all selected h4 elements
+                    h4Timers.forEach(function(h4Timer) {
+                        h4Timer.innerHTML = grow; // Update the inner HTML
+                    });
+                    grow++;
+                }
+            }, 35);
+        }
+    })
+    
+    tl.to('.loader', {
+        opacity: 0,
+        duration:0.2,
+        // delay: 3.8
+    })
+    
+    tl.from('#page1', {
+        y: 1600,
+        opacity: 0,
+        delay: 0.2,
+        duration: 1,
+        ease: Power4
+    })
+    
+    tl.to('.loader', {
+        display: 'none'
+    })
 
-tl.to('.loader', {
-    opacity: 0,
-    duration:0.2,
-    delay: 3.8
-})
+    tl.from('nav', {
+        opacity: 0,
+        y: -100,
+        duration: 0.5,
+    })
 
-tl.from('#page1', {
-    y: 1600,
-    opacity: 0,
-    delay: 0.2,
-    ease: Power4
-})
+    tl.from('#hero1 h1, #hero2 h1, #hero3 h2, #hero4 h1', {
+        y: 150,
+        stagger: 0.2,
+        opacity: 0,
+    })
+}
+function cursorAnimation() {
+    document.addEventListener('mousemove', function(dets){
+        gsap.to('.crsr', {
+            left:dets.x,
+            top:dets.y,
+        })
+    });
+    
+    Shery.makeMagnet(".nav2 h4",{});
+}
 
-tl.to('.loader', {
-    display: 'none'
-})
+
+loaderAnimation();
+cursorAnimation();
