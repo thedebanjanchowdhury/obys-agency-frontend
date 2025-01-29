@@ -209,6 +209,19 @@ document.querySelector("#hero3").addEventListener("mouseleave", function(){
   })
 })
 
+gsap.to(".underline", {
+  left: 1500, 
+  duration: 0.2, 
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".underline",
+    scroller: "body",
+    start: "top 60%",
+    // markers: true
+  }
+});
+
+
 loaderAnimation();
 cursorAnimation();
 locomotiveScroll();
