@@ -13,13 +13,13 @@ html, body {
   width: 100%;
 }
 
-body {
+/* body {
   overflow: hidden;
 }
 
 ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .mousefollower {
   border: 2px solid #fff;

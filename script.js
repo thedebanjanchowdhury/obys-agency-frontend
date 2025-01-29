@@ -46,7 +46,7 @@ function loaderAnimation() {
     stagger: 0.3,
     opacity: 0,
     duration: 0.6,
-    delay: 0.5,
+    delay: 4,
   });
 
   tl.from(".line1-part1, .line h2", {
